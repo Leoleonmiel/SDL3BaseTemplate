@@ -37,14 +37,13 @@ int main(int argc, char* argv[])
             case SDL_EVENT_KEY_DOWN:
                 if (SDLK_ESCAPE) //If key down is escape
                 {
-                    SDL_DestroyWindow(window);  // Close and destroy the window
+                    SDL_DestroyWindow(window);  //Destroy the window
                     SDL_DestroyRenderer(renderer);
                     gameIsRunning = false;
                 }
                 break;
-
             case SDL_EVENT_WINDOW_CLOSE_REQUESTED: //if 'X' is clicked
-                SDL_DestroyWindow(window);  // Close and destroy the window
+                SDL_DestroyWindow(window);  //Destroy the window
                 SDL_DestroyRenderer(renderer);
                 gameIsRunning = false;
                 break;
