@@ -6,23 +6,18 @@
 
 int main(int argc, char* argv[])
 {
-
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
-    bool gameIsRunning = false;
-
-    SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL3
+    bool gameIsRunning = SDL_Init(SDL_INIT_VIDEO);
 
     window = SDL_CreateWindow( // Declare a pointer
-        "SDL 3 BASE Template",                  // window title
-        S_WIDTH,                               // width, in pixels
-        S_HEIGHT,                               // height, in pixels
-        0                 // flags - see below
+        "SDL 3 BASE Template", // window title
+        S_WIDTH, // width, in pixels
+        S_HEIGHT,  // height, in pixels
+        0  // flags
     );
 
     renderer = SDL_CreateRenderer(window, NULL);
-
-    gameIsRunning = SDL_Init(SDL_INIT_VIDEO);
 
     // Check that the window was successfully created
     if (window == NULL)
@@ -43,12 +38,14 @@ int main(int argc, char* argv[])
                 if (SDLK_ESCAPE) //If key down is escape
                 {
                     SDL_DestroyWindow(window);  // Close and destroy the window
+                    SDL_DestroyRenderer(renderer);
                     gameIsRunning = false;
                 }
                 break;
 
             case SDL_EVENT_WINDOW_CLOSE_REQUESTED: //if 'X' is clicked
                 SDL_DestroyWindow(window);  // Close and destroy the window
+                SDL_DestroyRenderer(renderer);
                 gameIsRunning = false;
                 break;
             default:
@@ -58,7 +55,7 @@ int main(int argc, char* argv[])
         // update game state, draw the current frame
 
         //Display
-        SDL_SetRenderDrawColor(renderer, 130, 200, 130, 255); //set renderer to R= 130, G=200, B=130
+        SDL_SetRenderDrawColor(renderer, 130, 200, 130, 255); //set renderer to Red= 130, Green=200, Bblue=130, Alpha(transparence)=255 /Values go from 0 to 255)
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
     }
